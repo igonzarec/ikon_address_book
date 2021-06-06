@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ikon_address_book/constants/constants.dart';
+import 'package:ikon_address_book/widgets/contact_name_widget.dart';
 
 class GroupView extends StatefulWidget {
-  GroupView(this._contactNames, {Key key, this.title}) : super(key: key);
+  GroupView(this._contactNames, {Key key}) : super(key: key);
 
   final List<String> _contactNames;
-  final String title;
 
   @override
   _GroupViewState createState() => _GroupViewState();
@@ -14,7 +13,7 @@ class GroupView extends StatefulWidget {
 
 class _GroupViewState extends State<GroupView> {
   bool _isSearchActive = false;
-  Iterable<String> _suggestions;
+  Iterable<String> _suggestions = [];
   String hintText = 'Type in here to search and filter';
 
   @override
@@ -32,18 +31,15 @@ class _GroupViewState extends State<GroupView> {
             pinned: true,
             collapsedHeight: 100,
             expandedHeight: 200,
-
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
                 height: 100,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Address book'),
+                    Text('My Address book'),
                     ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: 30
-                      ),
+                      constraints: BoxConstraints(minHeight: 30),
                       child: Container(
                         margin: EdgeInsets.only(left: 10, right: 10),
                         height: 30,
@@ -105,6 +101,15 @@ class _GroupViewState extends State<GroupView> {
                         ),
                       ),
                     ),
+                    if (_isSearchActive &&
+                        _suggestions.length != widget._contactNames.length)
+                      Text(
+                        'Search matches: ${_suggestions.length}',
+                        style: TextStyle(
+                          height: 0,
+                          fontSize: 12,
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -115,15 +120,8 @@ class _GroupViewState extends State<GroupView> {
               ? SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return Container(
-                        //TODO: add proper format to this
-                        color: index.isOdd ? Colors.white : Colors.black12,
-                        height: 100.0,
-                        child: Center(
-                          child: Text('${widget._contactNames[index]}',
-                              textScaleFactor:
-                                  Constants.contactNameScaleFactor),
-                        ),
+                      return ContactNameWidget(
+                        widget._contactNames[index],
                       );
                     },
                     childCount: widget._contactNames.length,
@@ -132,15 +130,8 @@ class _GroupViewState extends State<GroupView> {
               : SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return Container(
-                        //TODO: add proper format to this
-                        color: index.isOdd ? Colors.white : Colors.black12,
-                        height: 100.0,
-                        child: Center(
-                          child: Text('${_suggestions.elementAt(index)}',
-                              textScaleFactor:
-                                  Constants.contactNameScaleFactor),
-                        ),
+                      return ContactNameWidget(
+                        _suggestions.elementAt(index),
                       );
                     },
                     childCount: _suggestions.length,

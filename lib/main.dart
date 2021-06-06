@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ikon addres book',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
-      home: GroupView(_contactsService.getContacts(), title: 'Flutter Demo Home Page'),
+      home: GroupView(_contactsService.getContacts()),
     );
   }
 }
