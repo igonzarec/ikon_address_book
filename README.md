@@ -9,3 +9,5 @@ Since the application works with a list, it could be a possibility to implement 
 Finally, regarding the search engine that works as a filter, I chose to design it myself using an algorithm, two lists and the properties of the TextField. All within a Stateful Widget.
 
 To test this solution it is enough to access the project, run flutter pub get and then compile it either on an emulator or on a physical Android or iOS device. Preferably with Android Studio or Visual Studio Code.
+
+It is worth mentioning that this project was carried out on a computer with flutter version 2.0.5.
