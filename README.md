@@ -7,3 +7,5 @@ The main widget class accepts generic values ​​that extend from NamedElement
 Since the application works with a list, it could be a possibility to implement a "scroll to index", but it should be taken into account that, when working with a widget that shows a scrollable list, the most direct solution is to use a ListView and its controller. CustomScrollView also has a controller but it seems to handle the whole and not just the SliverList, which does not have a controller like ListView. In that sense, if you one wants to keep the Slivers, an approach can be to make use of a package https://pub.dev/packages/scroll_to_index or to manipulate the widgets at a lower level, which is not as straightforward, as is known .
 
 Finally, regarding the search engine that works as a filter, I chose to design it myself using an algorithm, two lists and the properties of the TextField. All within a Stateful Widget.
+
+To test this solution it is enough to access the project, run flutter pub get and then compile it either on an emulator or on a physical Android or iOS device. Preferably with Android Studio or Visual Studio Code.
