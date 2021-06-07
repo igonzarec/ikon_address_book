@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ikon_address_book/constants/constants.dart';
 import 'package:ikon_address_book/screens/group_view.dart';
 import 'package:ikon_address_book/services/contacts_service.dart';
 
@@ -15,9 +16,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ikon addres book',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        primarySwatch: Constants.themeColor,
       ),
-      home: GroupView(_contactsService.getContacts()),
+      home: GroupView(
+        _contactsService.getContacts(),
+        header: 'Optional header',
+        footer: "Optional footer",
+      ),
     );
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ikon_address_book/constants/constants.dart';
 
 class ContactNameDetails extends StatelessWidget {
-  const ContactNameDetails(this.contactName, {Key key}) : super(key: key);
-  final String contactName;
+  const ContactNameDetails(this._contactName, {Key key}) : super(key: key);
+  final String _contactName;
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +11,8 @@ class ContactNameDetails extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Text(
-          contactName,
-          textScaleFactor: 3,
+          _contactName,
+          textScaleFactor: Constants.contactScreenNameScaleFactor,
         ),
       ),
     );
